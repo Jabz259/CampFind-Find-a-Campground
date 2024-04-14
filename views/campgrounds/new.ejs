@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new campground</title>
+</head>
+<body>
+    
+    <form action="/campgrounds" method="POST">
+        <!-- //assigning location and title to the name of each input as keys
+        name="campground[title]"> name="campground[location]]"> will be passed through the req.body which is then
+        accessible from app.js -->
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="campground[title]">
+        </div>
+
+        <div>
+            <label for="location">Location</label>
+            <input type="text" id="location" name="campground[location]]">
+        </div>
+        <button>Add Campground</button>
+    </form>
+
+    <div><a href="/campgrounds"> Return to All Campgrounds</a></div>
+
+</body>
+</html>
