@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campground</title>
-</head>
-
-<body>
+<% layout('layouts/boilerplate') %>
     <h1>All Campground</h1>
 
     <div> <a href="/campgrounds/new"> Add Campground </a></div>
 
-    <ul>
         <!--Retrieving all our MongoDB data and display them run a for loop and access campground.title fields -->
         <% for (let campground of campgrounds) { %>
-            <li> <a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a></li>
-            <% } %>
-        </ul>
+           <div class="card" mb-3>
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Placeholder google image, not sure why unsplash is not working -->
+                    <!-- <img class="img-fluid" alt="" src="<%= campground.image %>"> -->
+                    <img class="img-fluid" alt="" src="https://i.pinimg.com/originals/93/c0/fc/93c0fc8ca2141a85dc1d871556ae3418.jpg">
+                </div>
 
-    
-</body>
-</html>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">  <%= campground.title %> </h5>
+                        <p class="card-text"><%=campground.description%></p>
+                        <p class="card-text">
+                            <small class="text-muted"> <%= campground.location %> </small>    
+                        </p>
+
+                        <a href="/campgrounds/<%= campground._id %>" class="btn text-white" style="background-color: #0B1A26" > view <%= campground.title %> </a>
+
+                    </div>
+                </div>
+            </div>
+           </div>
+            <% } %>
+      
+

@@ -1,34 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create new campground</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
 
-    <h1>Edit Campground</h1>
+    <!-- <h1>Edit Campground</h1>
     
-    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
-
-        <!-- //assigning location and title to the name of each input as keys
+         //assigning location and title to the name of each input as keys
         name="campground[title]"> name="campground[location]]"> will be passed through the req.body which is then
         accessible from app.js -->
-        <div>
-            <label for="title">Title</label>
-            <!-- passing selected data to title field-->
-            <input type="text" id="title" name="campground[title]" value="<%= campground.title %>">
+      
+    <div class="row">
+        <h1 class="text-center">Edit Campground</h1>
+        <div class="col-6 offset-3"> 
+            <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+                <!-- //assigning location and title to the name of each input as keys
+                name="campground[title]"> name="campground[location]]"> will be passed through the req.body which is then
+                accessible from app.js -->
+    
+                <!-- title -->
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required value="<%= campground.title %>">
+                </div>
+        
+                <!-- LOCATION -->
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]]" required value="<%= campground.location %>">
+                </div>
+                
+                <!-- IMAGE -->
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" type="text" id="image" name="campground[image]">
+                </div>
+    
+                <!-- PRICE -->
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="price-label">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="price" placeholder="0.0" aria-label="Price" aria-describedby="price-label" 
+                    name="campground[price]" required value="<%= campground.price %>">
+                  </div>
+    
+            
+    
+                <!-- TEXTAREA -->
+                <div class="mb-3">
+                    <label class="form-label" for="description"> Description </label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"> required <%= campground.description %></textarea>
+                </div>
+    
+    
+                <button class="btn text-white" style="background-color: #0B1A26">Update Campground</button>
+    
+            </form>
+        
+            <div><a href="/campgrounds/<%=campground._id%>">Back to Campground</a></div>
+        
+    
         </div>
-
-        <div>
-            <label for="location">Location</label>
-            <!-- passing selected data to location field-->
-            <input type="text" id="location" name="campground[location]]" value="<%= campground.location %>">
-        </div>
-        <button>Update this Campground</button>
-    </form>
-
-    <div><a href="/campgrounds/<%=campground._id%>">Back to Campground</a></div>
-
-</body>
-</html>
+    </div>
