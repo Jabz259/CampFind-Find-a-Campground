@@ -5,6 +5,8 @@ const Joi = require('joi')
         campground: Joi.object({
             title: Joi.string().required(),
             price: Joi.number().required().min(0),
+            //we need to sort out the images for this
+            //it does not work properly currently using a single image to populate all campgrounds
             image: Joi.string().required(),
             location: Joi.string().required(),
             description: Joi.string().required()
